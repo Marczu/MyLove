@@ -11,8 +11,9 @@ import android.os.Bundle;
 import android.util.Log;
 
 import com.marcinmejner.mylove.Utils.PreferenceKeys;
+import com.marcinmejner.mylove.model.User;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements IMainActivity {
     private static final String TAG = "MainActivity";
 
     @Override
@@ -52,8 +53,22 @@ public class MainActivity extends AppCompatActivity {
         HomeFragment homeFragment = new HomeFragment();
         android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.main_content_frame, homeFragment, "Home")
-                .addToBackStack("home")
+                .addToBackStack("Home")
                 .commit();
 
+    }
+
+    @Override
+    public void inflateViewProfileFragment(User user) {
+        ViewProfileFragment viewProfileFragment = new ViewProfileFragment();
+
+        Bundle bundle = new Bundle();
+        bundle.putParcelable("userIntent", user);
+        viewProfileFragment.setArguments(bundle);
+
+        android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.main_content_frame, viewProfileFragment, "ViewProfile")
+                .addToBackStack("ViewProfile")
+                .commit();
     }
 }

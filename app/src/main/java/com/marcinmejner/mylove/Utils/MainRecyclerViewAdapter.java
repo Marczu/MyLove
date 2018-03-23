@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.marcinmejner.mylove.IMainActivity;
 import com.marcinmejner.mylove.R;
 import com.marcinmejner.mylove.model.User;
 import com.squareup.picasso.Picasso;
@@ -25,6 +26,7 @@ public class MainRecyclerViewAdapter extends RecyclerView.Adapter<MainRecyclerVi
 
     private Context context;
     private List<User> users = new ArrayList<>();
+    private IMainActivity mInterface;
 
 
     public MainRecyclerViewAdapter(Context context, List<User> users) {
@@ -43,7 +45,7 @@ public class MainRecyclerViewAdapter extends RecyclerView.Adapter<MainRecyclerVi
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
 
         holder.profileName.setText("Name: " + users.get(position).getName());
         holder.profileGender.setText("Gender: " + users.get(position).getGender());
@@ -54,7 +56,20 @@ public class MainRecyclerViewAdapter extends RecyclerView.Adapter<MainRecyclerVi
                 .placeholder(R.drawable.ic_love)
                 .into(holder.profileImage);
 
+        holder.cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mInterface.inflateViewProfileFragment(users.get(position));
+            }
+        });
 
+    }
+
+    @Override
+    public void onAttachedToRecyclerView(@NonNull RecyclerView recyclerView) {
+        super.onAttachedToRecyclerView(recyclerView);
+
+        mInterface = (IMainActivity) context;
     }
 
     @Override
