@@ -1,0 +1,56 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="com.marcinmejner.mylove.ViewProfileFragment"
+    >
+
+
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_margin="30dp"
+        android:id="@+id/detail_profile_picture"
+        android:layout_width="220dp"
+        android:layout_height="220dp"
+        android:layout_marginTop="5dp"
+        app:civ_border_color="@color/colorPrimary"
+        app:civ_border_width="2dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="10dp"
+        tools:background="@color/primary_light"/>
+
+    <TextView
+        android:id="@+id/detail_profile_name"
+        android:layout_below="@id/detail_profile_picture"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:textSize="20dp"
+        android:text="Name:"
+        />
+
+    <TextView
+        android:id="@+id/detail_profile_status"
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/detail_profile_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:textSize="20dp"
+        android:text="Status:"
+        />
+
+    <TextView
+        android:id="@+id/detail_profile_gender"
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/detail_profile_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:textSize="20dp"
+        android:text="Gender:"
+        />
+
+
+</RelativeLayout>
